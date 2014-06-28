@@ -1,2 +1,6 @@
 .vagrant/
 aws/cloud-init.mime
+.librarian
+.tmp
+Puppetfile.lock
+puppet/modules

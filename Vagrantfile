@@ -15,6 +15,7 @@ end
 
 Vagrant.configure("2") do |config|
   # config.vm.box = "ubuntu/trusty64"
+  # config.vm.network "private_network", ip: "192.168.40.20"
   config.vm.box = "dummy"
   config.vm.provider "aws" do |aws, override|
     aws.access_key_id = ENV['AWS_ACCESS_KEY_ID']

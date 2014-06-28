@@ -5,6 +5,40 @@ SCRIPT_ROOT=$(echo "$1")
 OS=$(/bin/bash /tmp/os-detect.sh ID)
 CODENAME=$(/bin/bash /tmp/os-detect.sh CODENAME)
 
+RUBYVER=$(ruby -e "print RUBY_VERSION")
+
+vercomp () {
+    if [[ $1 == $2 ]]
+    then
+        return 0
+    fi
+    local IFS=.
+    local i ver1=($1) ver2=($2)
+    # fill empty fields in ver1 with zeros
+    for ((i=${#ver1[@]}; i<${#ver2[@]}; i++))
+    do
+        ver1[i]=0
+    done
+    for ((i=0; i<${#ver1[@]}; i++))
+    do
+        if [[ -z ${ver2[i]} ]]
+        then
+            # fill empty fields in ver2 with zeros
+            ver2[i]=0
+        fi
+        if ((10#${ver1[i]} > 10#${ver2[i]}))
+        then
+            return 1
+        fi
+        if ((10#${ver1[i]} < 10#${ver2[i]}))
+        then
+            return 2
+        fi
+    done
+    return 0
+}
+
+
 # Directory in which librarian-puppet should manage its modules directory
 PUPPET_DIR=/etc/puppet/
 
@@ -70,8 +104,16 @@ fi
 cd "$PUPPET_DIR"
 
 if [[ ! -f /var/puppet-init/librarian-puppet-installed ]]; then
-    echo 'Installing librarian-puppet 1.0.3 because 1.1.x is causing some issues at the moment'
-    gem install librarian-puppet -v1.0.3
+
+    vercomp $RUBYVER 1.9.3
+    RET=$?
+    if [ $RET -eq 1 ] ; then
+        echo 'Installing librarian-puppet 1.0.3 because 1.1.x is causing some issues at the moment'
+        gem install librarian-puppet -v1.0.3
+    else
+        echo 'Installing librarian-puppet 1.1.x'
+        gem install librarian-puppet -v1.1.2
+    fi
     echo 'Finished installing librarian-puppet'
 
     echo 'Running initial librarian-puppet'
