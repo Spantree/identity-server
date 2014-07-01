@@ -105,10 +105,8 @@ cd "$PUPPET_DIR"
 
 if [[ ! -f /var/puppet-init/librarian-puppet-installed ]]; then
 
-    vercomp $RUBYVER 1.9.3
-    RET=$?
-    if [ $RET -eq 1 ] ; then
-        echo 'Installing librarian-puppet 1.0.3 because 1.1.x is causing some issues at the moment'
+    if [ vercomp $RUBYVER 1.8.7 ]; then
+        echo 'Installing librarian-puppet 1.0.3 because 1.1.x is not supported on ruby 1.8'
         gem install librarian-puppet -v1.0.3
     else
         echo 'Installing librarian-puppet 1.1.x'
