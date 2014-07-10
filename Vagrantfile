@@ -57,6 +57,7 @@ Vagrant.configure("2") do |config|
     puppet.options = [
       "--verbose",
       "--debug",
+      "--ordering=manifest", 
       "--modulepath=/etc/puppet/modules:/usr/local/etc/puppet/modules",
       "--hiera_config /usr/local/src/project/hiera.yaml"
     ]

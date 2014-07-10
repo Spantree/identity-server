@@ -1,0 +1,241 @@
+dn: ou=users,dc=spantree,dc=net
+objectClass: organizationalUnit
+objectClass: top
+structuralObjectClass: organizationalUnit
+ou: users
+
+dn: ou=groups,dc=spantree,dc=net
+objectClass: organizationalUnit
+objectClass: top
+structuralObjectClass: organizationalUnit
+ou: groups
+
+dn: cn=Executives,ou=groups,dc=spantree,dc=net
+member: cn=Cedric Hurst,ou=users,dc=spantree,dc=net
+member: cn=Andrea Schuster,ou=users,dc=spantree,dc=net
+objectClass: groupOfNames
+objectClass: top
+structuralObjectClass: groupOfNames
+cn: Executives
+
+dn: cn=Devops,ou=groups,dc=spantree,dc=net
+member: cn=admin,dc=spantree,dc=net
+member: cn=Cedric Hurst,ou=users,dc=spantree,dc=net
+member: cn=Jeronimo Garcia,ou=users,dc=spantree,dc=net
+member: cn=Sebastian Otaegui,ou=users,dc=spantree,dc=net
+member: cn=Gary Turovsky,ou=users,dc=spantree,dc=net
+member: cn=Kevin Greene,ou=users,dc=spantree,dc=net
+member: cn=Roberto Guerra,ou=users,dc=spantree,dc=net
+member: cn=Nemanja Stefanovic,ou=users,dc=spantree,dc=net
+member: cn=Allie Curry,ou=users,dc=spantree,dc=net
+member: cn=Malynda Chizek Fourard,ou=users,dc=spantree,dc=net
+member: cn=Bob Paulin,ou=users,dc=spantree,dc=net
+objectClass: groupOfNames
+objectClass: top
+structuralObjectClass: groupOfNames
+cn: Devops
+
+dn: cn=Administrators,ou=groups,dc=spantree,dc=net
+member: cn=admin,dc=spantree,dc=net
+member: cn=Cedric Hurst,ou=users,dc=spantree,dc=net
+member: cn=Jeronimo Garcia,ou=users,dc=spantree,dc=net
+member: cn=Sebastian Otaegui,ou=users,dc=spantree,dc=net
+member: cn=Gary Turovsky,ou=users,dc=spantree,dc=net
+member: cn=Kevin Greene,ou=users,dc=spantree,dc=net
+objectClass: groupOfNames
+objectClass: top
+structuralObjectClass: groupOfNames
+cn: Administrators
+
+dn: cn=Cedric Hurst,ou=users,dc=spantree,dc=net
+sn: Hurst
+cn: Cedric Hurst
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+structuralObjectClass: inetOrgPerson
+memberOf: cn=Devops,ou=groups,dc=spantree,dc=net
+memberOf: cn=Administrators,ou=groups,dc=spantree,dc=net
+memberOf: cn=Executives,ou=groups,dc=spantree,dc=net
+mail: cedric@spantree.net
+givenName: Cedric
+uid: divideby0
+userPassword:: e3NzaGF9VTF0L3l2SEdscTNIcDFuUkRONzlma0ZuSWhmRGJVbUorL1dCTVE9PQ=
+ =
+
+dn: ou=service accounts,dc=spantree,dc=net
+ou: service accounts
+objectClass: organizationalUnit
+objectClass: top
+structuralObjectClass: organizationalUnit
+
+dn: cn=Jenkins,ou=service accounts,dc=spantree,dc=net
+uid: jenkins
+mail: jenkins@spantree.net
+givenName: Jenkins
+sn: CI
+cn: Jenkins
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e3NzaGF9QlJyMlM2cHFza0RnZkgvdERqV0ZsTXZGRnRpNVBzTUFqU1h1TUE9PQ=
+ =
+structuralObjectClass: inetOrgPerson
+
+dn: cn=Jeronimo Garcia,ou=users,dc=spantree,dc=net
+uid: bechampion
+mail: jerry@spantree.net
+givenName: Jeronimo
+sn: Garcia
+cn: Jeronimo Garcia
+memberOf: cn=Devops,ou=groups,dc=spantree,dc=net
+memberOf: cn=Administrators,ou=groups,dc=spantree,dc=net
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e3NzaGF9ei84UlM4bkE4b1JYbkpEQXd2ZGEvK0crVWExMkFtOGxUTElHSVE9PQ=
+ =
+structuralObjectClass: inetOrgPerson
+
+dn: cn=Sebastian Otaegui,ou=users,dc=spantree,dc=net
+uid: feniix
+mail: sebastian@spantree.net
+givenName: Sebastian
+sn: Otaegui
+cn: Sebastian Otaegui
+memberOf: cn=Devops,ou=groups,dc=spantree,dc=net
+memberOf: cn=Administrators,ou=groups,dc=spantree,dc=net
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e3NzaGF9ei84UlM4bkE4b1JYbkpEQXd2ZGEvK0crVWExMkFtOGxUTElHSVE9PQ=
+ =
+structuralObjectClass: inetOrgPerson
+
+dn: cn=Gary Turovsky,ou=users,dc=spantree,dc=net
+uid: flyhighplato
+mail: gary@spantree.net
+givenName: Gary
+sn: Turovsky
+cn: Gary Turovsky
+memberOf: cn=Devops,ou=groups,dc=spantree,dc=net
+memberOf: cn=Administrators,ou=groups,dc=spantree,dc=net
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e3NzaGF9ei84UlM4bkE4b1JYbkpEQXd2ZGEvK0crVWExMkFtOGxUTElHSVE9PQ=
+ =
+structuralObjectClass: inetOrgPerson
+
+dn: cn=Kevin Greene,ou=users,dc=spantree,dc=net
+uid: kevingreene
+mail: kevin@spantree.net
+givenName: Kevin
+sn: Greene
+cn: Kevin Greene
+memberOf: cn=Devops,ou=groups,dc=spantree,dc=net
+memberOf: cn=Administrators,ou=groups,dc=spantree,dc=net
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e3NzaGF9ei84UlM4bkE4b1JYbkpEQXd2ZGEvK0crVWExMkFtOGxUTElHSVE9PQ=
+ =
+structuralObjectClass: inetOrgPerson
+
+dn: cn=Roberto Guerra,ou=users,dc=spantree,dc=net
+uid: uris7
+mail: roberto@spantree.net
+givenName: Roberto
+sn: Guerra
+cn: Roberto Guerra
+memberOf: cn=Devops,ou=groups,dc=spantree,dc=net
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e3NzaGF9ei84UlM4bkE4b1JYbkpEQXd2ZGEvK0crVWExMkFtOGxUTElHSVE9PQ=
+ =
+structuralObjectClass: inetOrgPerson
+
+dn: cn=Nemanja Stefanovic,ou=users,dc=spantree,dc=net
+uid: nemik
+mail: nemik@spantree.net
+givenName: Nemanja
+sn: Stefanovic
+cn: Nemanja Stefanovic
+memberOf: cn=Devops,ou=groups,dc=spantree,dc=net
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e3NzaGF9ei84UlM4bkE4b1JYbkpEQXd2ZGEvK0crVWExMkFtOGxUTElHSVE9PQ=
+ =
+structuralObjectClass: inetOrgPerson
+
+dn: cn=Allie Curry,ou=users,dc=spantree,dc=net
+uid: alliecurry
+mail: allie@spantree.net
+givenName: Allie
+sn: Curry
+cn: Allie Curry
+memberOf: cn=Devops,ou=groups,dc=spantree,dc=net
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e3NzaGF9ei84UlM4bkE4b1JYbkpEQXd2ZGEvK0crVWExMkFtOGxUTElHSVE9PQ=
+ =
+structuralObjectClass: inetOrgPerson
+
+dn: cn=Malynda Chizek Fourard,ou=users,dc=spantree,dc=net
+uid: malynda
+mail: malynda@spantree.net
+givenName: Malynda
+sn: Chizek Fourard
+cn: Malynda Chizek Fourard
+memberOf: cn=Devops,ou=groups,dc=spantree,dc=net
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e3NzaGF9ei84UlM4bkE4b1JYbkpEQXd2ZGEvK0crVWExMkFtOGxUTElHSVE9PQ=
+ =
+structuralObjectClass: inetOrgPerson
+
+dn: cn=Bob Paulin,ou=users,dc=spantree,dc=net
+uid: bobpaulin
+mail: bob@spantree.net
+givenName: Bob
+sn: Paulin
+cn: Bob Paulin
+memberOf: cn=Devops,ou=groups,dc=spantree,dc=net
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e3NzaGF9ei84UlM4bkE4b1JYbkpEQXd2ZGEvK0crVWExMkFtOGxUTElHSVE9PQ=
+ =
+structuralObjectClass: inetOrgPerson
+
+dn: cn=Andrea Schuster,ou=users,dc=spantree,dc=net
+uid: andrea
+mail: andrea@spantree.net
+givenName: Andrea
+sn: Schuster
+cn: Andrea Schuster
+memberOf: cn=Administrators,ou=groups,dc=spantree,dc=net
+memberOf: cn=Executives,ou=groups,dc=spantree,dc=net
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e3NzaGF9ei84UlM4bkE4b1JYbkpEQXd2ZGEvK0crVWExMkFtOGxUTElHSVE9PQ=
+ =
+structuralObjectClass: inetOrgPerson
+

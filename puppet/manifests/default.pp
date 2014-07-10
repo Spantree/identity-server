@@ -2,12 +2,18 @@ hiera_include('classes')
 
 node default {
 
+  $default_entries = '/tmp/default-entries.ldif'
+
+  $import_ldap_data = '/tmp/initialize_ldap_data.sh'
+
+  Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
+
   class { 'openldap::server':
     databases              => {
       'dc=spantree,dc=net' => {
         directory          => '/var/lib/ldap',
         rootdn             => 'cn=admin,dc=spantree,dc=net',
-        rootpw             => '{SHA}qUqP5cyxm6YcTAhz05Hph5gvu9M=',
+        rootpw             => '{SSHA}KueX2WDOUm5kYGo36+G0iAw30/AoOf6a',
       }
     },
     suffix                 => 'dc=spantree,dc=net',
@@ -31,8 +37,29 @@ node default {
 
   openldap::server::module { 'memberof':
     ensure => present,
-  } ->
+  }
+
   openldap::server::overlay { 'memberof on dc=spantree,dc=net':
     ensure => present,
+  } ->
+
+
+  file { $default_entries:
+    ensure  => file,
+    source  => 'puppet:///modules/local_mod/ldap.ldif',
+  } ->
+
+  file { $import_ldap_data:
+    ensure => file,
+    source => 'puppet:///modules/local_mod/initialize_ldap_data.sh',
+    mode   => '0755',
+  } ->
+
+  exec { 'import-ldap-data':
+    command => "${import_ldap_data} ${default_entries}" ,
+    require => [
+      File[$default_entries],
+      File[$import_ldap_data]
+    ],
   }
 }

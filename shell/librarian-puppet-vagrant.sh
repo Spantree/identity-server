@@ -54,8 +54,8 @@ if [ "$FOUND_GIT" -ne '0' ] && [ ! -f /var/puppet-init/librarian-puppet-installe
     echo 'Installing git'
 
     if [ "${FOUND_YUM}" -eq '0' ]; then
-        yum -q -y makecache
-        yum -q -y install git
+        yum -y makecache
+        yum -y install git
     else
         apt-get -q -y install git-core
     fi
@@ -105,7 +105,9 @@ cd "$PUPPET_DIR"
 
 if [[ ! -f /var/puppet-init/librarian-puppet-installed ]]; then
 
-    if [ vercomp $RUBYVER 1.8.7 ]; then
+    vercomp $RUBYVER 1.8.7
+    RET=$?
+    if [[ $RET -eq 0 ]]; then
         echo 'Installing librarian-puppet 1.0.3 because 1.1.x is not supported on ruby 1.8'
         gem install librarian-puppet -v1.0.3
     else

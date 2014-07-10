@@ -3,14 +3,17 @@
 OS=$(/bin/bash /tmp/os-detect.sh ID)
 CODENAME=$(/bin/bash /tmp/os-detect.sh CODENAME)
 
-while [ ! -f /var/lib/cloud/instance/boot-finished ] ; do
-  sleep 10
-  echo "sleeping for 10 seconds while cloud-init is running"
-done
-while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
-  sleep 10
-  echo "Waiting while apt is ran by cloud-init"
-done
+# this is a temporary workaround
+if [ "$OS" == 'ubuntu' ]; then
+    while [ ! -f /var/lib/cloud/instance/boot-finished ] ; do
+        sleep 10
+        echo "sleeping for 10 seconds while cloud-init is running"
+    done
+    while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
+        sleep 10
+        echo "Waiting while apt is ran by cloud-init"
+    done
+fi
 
 if [[ ! -d /var/puppet-init/ ]]; then
     mkdir /var/puppet-init
@@ -31,11 +34,11 @@ if [[ ! -f /var/puppet-init/initial-setup-repo-update ]]; then
         echo "Finished running initial-setup apt-get update"
     elif [[ "$OS" == 'centos' ]]; then
         echo "Running initial-setup yum update"
-        yum update -y >/dev/null
+        yum update -y 
         echo "Finished running initial-setup yum update"
 
         echo "Installing basic development tools (CentOS)"
-        yum -y groupinstall "Development Tools" >/dev/null
+        yum -y groupinstall "Development Tools"
         echo "Finished installing basic development tools (CentOS)"
         touch /var/puppet-init/initial-setup-repo-update
     fi

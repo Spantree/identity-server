@@ -14,7 +14,7 @@
         "Arch": "x64",
         "OS_Version": "Ubuntu",
         "Release": "trusty",
-        "Role": "identity server",
+        "Role": "ldap server",
         "Vendor": "spantree"
       },
       "type": "amazon-ebs",
@@ -60,7 +60,7 @@
         "/usr/local/src/project/shell/initial-setup.sh",
         "/usr/local/src/project/shell/update-puppet.sh",
         "/usr/local/src/project/shell/librarian-puppet-vagrant.sh /usr/local/src/project/shell",
-        "puppet apply --verbose --debug --modulepath=/etc/puppet/modules:/usr/local/etc/puppet/modules --hiera_config /usr/local/src/project/hiera.yaml /usr/local/src/project/puppet/manifests/default.pp"
+        "puppet apply --verbose --debug --ordering=manifest --modulepath=/etc/puppet/modules:/usr/local/etc/puppet/modules --hiera_config /usr/local/src/project/hiera.yaml /usr/local/src/project/puppet/manifests/default.pp"
       ]
     }
   ],
